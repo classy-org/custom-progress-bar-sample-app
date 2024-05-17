@@ -1,0 +1,26 @@
+.donut-ring {
+  stroke: #ebebeb;
+}
+
+.donut-segment {
+  transform-origin: center;
+  animation: donut 3s;
+}
+
+.donut-text {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.donut-percent {
+  font-size: 0.5em;
+  line-height: 1;
+  transform: translateY(0.5em);
+  font-weight: bold;
+}
+
+.svg-item {
+  width: 100%;
+  font-size: 16px;
+  margin: 0 auto;
+  transition: all 0.5s;
+}
