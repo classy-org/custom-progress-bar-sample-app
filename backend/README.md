@@ -22,8 +22,15 @@ This project is meant to be a simple example of how to connect to the Classy API
 This project is meant as an example of how to consume the Classy APIs.
 It provides a simple REST API with a single endpoint `/campaigns/:id` that returns the fundraising progress of a Classy campaign.
 
-This project is meant to be used in conjunction with the [backend](../backend/README.md) project. It provides a simple frontend to consume the backend API and display the fundraising progress of a Classy campaign.
+This project can be consumed directly, via an API platform like [Postman](https://www.postman.com/) or through our sample [frontend](../frontend/README.md) project.
 
-The frontend is a React application bootstrapped using Vite.
-The key file which contains the logic is `src/App.tsx`.
-The progress bar is displayed using the `CircleGraph` component, built using SVG & CSS with basic animations. This file can be ignored if you're only interested in the API consumption logic.
+## Project structure
+
+This project uses [Express](https://expressjs.com/) to create a simple REST API with two routes defined in the `src/server.ts` file:
+
+- `GET /health-check`: A simple health check endpoint that returns a 200 status code if the server is running.
+- `GET /campaigns/:campaignId/progress`: An endpoint that returns the fundraising progress of a Classy campaign.
+
+Each route group is handled by a separate router file inside the `src/api` folder.
+
+Within the `src/common/utils/classyAuth.ts` file, you will find the logic to authenticate with the Classy API using the client id and secret.
