@@ -8,6 +8,11 @@
     "build": "tsc && vite build",
     "format": "cd backend && npm run format && cd ../frontend && npm run format",
     "format:check": "cd backend && npm run format:check && cd ../frontend && npm run format:check",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start:local": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
     "preview": "vite preview"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

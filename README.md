@@ -10,3 +10,13 @@ This application shell makes use of a
 You can find the backend layer in the `/backend` folder (and setup instructions [here](/backend/README.md)) and the frontend part of the application in the `/frontend` folder (and setup instructions [here](/frontend/README.md)).
 
 Please clone the repository and follow the instructions in the respective README files to get started.
+
+## Setup / Local Development
+
+The backend can be run independently. The frontend depends on the backend.
+Each can be run by following the setup on their respective README files, or you can run both at the same time by following these steps:
+
+1. Clone the repository
+2. Install dependencies: `npm run install:all`
+3. Review the README files in the `/backend` and `/frontend` folders for instructions on how to setup the .env files (third point in the setup for both)
+4. Start the local server: `npm run start:local`

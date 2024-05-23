@@ -71,7 +71,7 @@ function App() {
             <>
               <div className="infoContainer">
                 <p className="totalRaisedLabel">Total Raised</p>
-                <p className="totalRaisedAmount">${parseFloat(campaignData?.gross_amount?.toFixed(2) || '0')}</p>
+                <p className="totalRaisedAmount">${campaignData?.gross_amount}</p>
               </div>
               <CircleGraph percentage={campaignData?.percent_to_goal} size={140} />
             </>
