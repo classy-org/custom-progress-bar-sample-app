@@ -31,7 +31,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | undefined>();
 
-  useEffect(() => { 
+  useEffect(() => {
     // Query the backend to get the information (the backend will in turn query the Classy API)
     const fetchProgress = async () => {
       try {
