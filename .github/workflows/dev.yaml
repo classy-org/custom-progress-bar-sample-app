@@ -23,7 +23,10 @@ jobs:
           npm test
       - name: Check Frontend
         working-directory: ./frontend
+        env:
+          FRONTEND_ENV_FILE: ${{ secrets.FRONTEND_ENV }}
         run: |
+          echo $FRONTEND_ENV_FILE | base64 --decode > .env
           npm install
           npm run lint
           npm run format:check
