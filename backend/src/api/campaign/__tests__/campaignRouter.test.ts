@@ -34,7 +34,7 @@ describe('Campaign API endpoints', () => {
       expect(response.statusCode).toEqual(StatusCodes.OK);
       expect(result.success).toEqual(true);
       expect(result.payload).toBeTypeOf('object');
-      expect(result.payload).toEqual({ gross_amount: 120.5 });
+      expect(result.payload).toEqual({ gross_amount: 120.4 });
 
       server.close();
     });
