@@ -11,6 +11,10 @@ You can find the backend layer in the `/backend` folder (and setup instructions 
 
 Please clone the repository and follow the instructions in the respective README files to get started.
 
+## Requirements
+
+- Node.js 14+ (it's recommended to use [nvm](https://github.com/nvm-sh/nvm), and if so, you can run `nvm use` to switch to the correct Node.JS version)
+
 ## Setup / Local Development
 
 The backend can be run independently. The frontend depends on the backend.
