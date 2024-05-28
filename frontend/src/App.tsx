@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { CircleGraph } from "./circleGraph/CircleGraph";
-import "./App.css";
+import { useEffect, useState } from 'react';
+import { CircleGraph } from './circleGraph/CircleGraph';
+import './App.css';
 
 // --- Response type definition for the backend /campaign/:campaignId/progress endpoint ---
 
@@ -27,9 +27,7 @@ type Response = SuccessResponse | ErrorResponse;
  * and renders a circle progress bar UI.
  */
 function App() {
-  const [campaignData, setCampaignData] = useState<
-    SuccessResponse["payload"] | undefined
-  >();
+  const [campaignData, setCampaignData] = useState<SuccessResponse['payload'] | undefined>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | undefined>();
 
@@ -38,13 +36,11 @@ function App() {
     const fetchProgress = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/campaigns/${
-            import.meta.env.VITE_CAMPAIGN_ID
-          }/progress`,
+          `${import.meta.env.VITE_API_BASE_URL}/campaigns/${import.meta.env.VITE_CAMPAIGN_ID}/progress`,
           {
-            method: "GET",
+            method: 'GET',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
           }
         );
@@ -56,7 +52,7 @@ function App() {
 
         setCampaignData(data.payload);
       } catch (error) {
-        setError((error as Error)?.message || "Failed to fetch info");
+        setError((error as Error)?.message || 'Failed to fetch info');
       } finally {
         setIsLoading(false);
       }
@@ -66,7 +62,7 @@ function App() {
   }, []);
 
   return (
-    <div className={`card${error ? " card-error" : ""}`}>
+    <div className={`card${error ? ' card-error' : ''}`}>
       {isLoading && <p className="loadingMessage">Loading information...</p>}
       {!isLoading && (
         <>
@@ -75,15 +71,9 @@ function App() {
             <>
               <div className="infoContainer">
                 <p className="totalRaisedLabel">Total Raised</p>
-                <p className="totalRaisedAmount">
-                  $
-                  {parseFloat(campaignData?.percent_to_goal?.toFixed(2) || "0")}
-                </p>
+                <p className="totalRaisedAmount">${campaignData?.gross_amount}</p>
               </div>
-              <CircleGraph
-                percentage={campaignData?.percent_to_goal}
-                size={140}
-              />
+              <CircleGraph percentage={campaignData?.percent_to_goal} size={140} />
             </>
           )}
         </>

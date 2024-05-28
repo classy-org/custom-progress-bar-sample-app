@@ -12,6 +12,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format": "prettier --config .prettierrc --write .",
+    "format:check": "prettier --config .prettierrc --check .",
     "test": "vitest run",
     "test:dev": "vitest dev",
     "test:cov": "vitest run --coverage"

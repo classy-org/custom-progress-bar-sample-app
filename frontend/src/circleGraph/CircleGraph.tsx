@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import "./CircleGraph.css";
+import { useEffect, useState } from 'react';
+import './CircleGraph.css';
 
 /**
  * Function used to dynamically animate the circle graph upon rendering
@@ -13,10 +13,10 @@ function useAnimateCircleBar(percentage?: number, percentageMissing?: number) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (typeof percentage !== "undefined") {
+    if (typeof percentage !== 'undefined') {
       setIsVisible(true);
 
-      const style = document.createElement("style");
+      const style = document.createElement('style');
       style.innerHTML = `
         @keyframes donut {
           0% {
@@ -30,12 +30,10 @@ function useAnimateCircleBar(percentage?: number, percentageMissing?: number) {
 
       document.head.appendChild(style);
 
-      const element = document.querySelector(
-        ".donut-segment"
-      ) as SVGCircleElement | null;
+      const element = document.querySelector('.donut-segment') as SVGCircleElement | null;
       if (element?.style) {
-        element.style.animationName = "donut";
-        element.style.animationDuration = "2s";
+        element.style.animationName = 'donut';
+        element.style.animationDuration = '2s';
       }
     }
   }, [percentage, percentageMissing]);
@@ -51,7 +49,7 @@ function useAnimateCircleBar(percentage?: number, percentageMissing?: number) {
 export function CircleGraph({
   size = 120,
   backgroundColor,
-  chartColor = "#425CC3",
+  chartColor = '#425CC3',
   percentage: percentageBase,
 }: {
   size?: number;
@@ -59,10 +57,7 @@ export function CircleGraph({
   chartColor?: string;
   percentage?: number;
 }) {
-  const percentage =
-    typeof percentageBase !== "undefined"
-      ? Math.min(100, percentageBase)
-      : undefined;
+  const percentage = typeof percentageBase !== 'undefined' ? Math.min(100, percentageBase) : undefined;
   const percentageMissing = 100 - (percentage || 0);
 
   const isVisible = useAnimateCircleBar(percentage, percentageMissing);
@@ -70,22 +65,8 @@ export function CircleGraph({
   return (
     <div className="svg-item" style={{ opacity: isVisible ? 1 : 0 }}>
       <svg width={size} height={size} viewBox="0 0 40 40">
-        {!!backgroundColor && (
-          <circle
-            cx="20"
-            cy="20"
-            r="15.91549430918954"
-            fill={backgroundColor}
-          />
-        )}
-        <circle
-          className="donut-ring"
-          cx="20"
-          cy="20"
-          r="15.91549430918954"
-          fill="transparent"
-          strokeWidth="3.5"
-        />
+        {!!backgroundColor && <circle cx="20" cy="20" r="15.91549430918954" fill={backgroundColor} />}
+        <circle className="donut-ring" cx="20" cy="20" r="15.91549430918954" fill="transparent" strokeWidth="3.5" />
         <circle
           className="donut-segment"
           cx="20"
@@ -94,15 +75,13 @@ export function CircleGraph({
           fill="transparent"
           stroke={chartColor}
           strokeWidth="3.5"
-          strokeDasharray={`${percentage || 0} ${
-            typeof percentage !== "undefined" ? percentageMissing : 100
-          }`}
+          strokeDasharray={`${percentage || 0} ${typeof percentage !== 'undefined' ? percentageMissing : 100}`}
           strokeDashoffset="25"
         />
         <g className="donut-text" fill={chartColor}>
           <text y="50%" transform="translate(0, 2)">
             <tspan x="50%" textAnchor="middle" className="donut-percent">
-              {parseFloat(percentage?.toFixed(2) || "0")}%
+              {parseFloat(percentage?.toFixed(2) || '0')}%
             </tspan>
           </text>
         </g>
