@@ -32,7 +32,7 @@ function App() {
   const [error, setError] = useState<string | undefined>();
 
   useEffect(() => {
-    // Query the backend to get the information (the backend will in turn query the Classy API)
+    // Query the backend to get the information (the backend will in turn query the GoFundMe Pro API)
     const fetchProgress = async () => {
       try {
         const response = await fetch(

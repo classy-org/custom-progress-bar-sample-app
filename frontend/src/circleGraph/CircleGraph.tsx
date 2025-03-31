@@ -43,7 +43,7 @@ function useAnimateCircleBar(percentage?: number, percentageMissing?: number) {
 
 /**
  * Circle Graph component using SVG and CSS with a basic animation.
- * This is used as an example of a progress bar for fundraising goal completion using the Classy API.
+ * This is used as an example of a progress bar for fundraising goal completion using the GoFundMe Pro API.
  * You may render/draw the graph in many other ways or using other libraries.
  */
 export function CircleGraph({

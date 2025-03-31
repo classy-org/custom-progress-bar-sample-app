@@ -1,4 +1,4 @@
-export type ClassyCampaignOverview = {
+export type GoFundMeProCampaignOverview = {
   donation_net_amount: number;
   donations_amount: string;
   donors_count: number;

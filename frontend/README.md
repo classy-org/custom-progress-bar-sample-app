@@ -1,6 +1,6 @@
-# Classy Progress Bar Sample App
+# GoFundMe Pro Progress Bar Sample App
 
-Sample React frontend to consume the sample `backend` that provides a REST API to query the fundraising progress of a Classy campaign.
+Sample React frontend to consume the sample `backend` that provides a REST API to query the fundraising progress of a GoFundMe Pro campaign.
 
 This project is meant to be a simple example using [Vite](https://vitejs.dev/). It is not meant to be a full-fledged application, nor to be used in production as-is.
 
@@ -19,7 +19,7 @@ This project is meant to be a simple example using [Vite](https://vitejs.dev/). 
 
 ## Project description
 
-This project is meant to be used in conjunction with the [backend](../backend/README.md) project. It provides a simple frontend to consume the backend API and display the fundraising progress of a Classy campaign.
+This project is meant to be used in conjunction with the [backend](../backend/README.md) project. It provides a simple frontend to consume the backend API and display the fundraising progress of a GoFundMe Pro campaign.
 
 The frontend is a React application bootstrapped using Vite.
 The key file which contains the logic is `src/App.tsx`.

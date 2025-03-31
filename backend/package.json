@@ -1,7 +1,7 @@
 {
-  "name": "classy-progress-bar-backend",
+  "name": "go-fund-me-pro-progress-bar-backend",
   "version": "1.0.0",
-  "description": "An express backend for the Classy progress bar sample app",
+  "description": "An express backend for the GoFundMe Pro progress bar sample app",
   "main": "index.ts",
   "private": true,
   "scripts": {

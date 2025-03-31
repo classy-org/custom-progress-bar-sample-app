@@ -6,7 +6,7 @@ import request from 'supertest';
 import { env } from '@/common/utils/envConfig';
 import { app } from '@/server';
 
-import { ClassyCampaignOverview } from '../campaignModel';
+import { GoFundMeProCampaignOverview } from '../campaignModel';
 
 describe('Campaign API endpoints', () => {
   describe('GET /campaigns/:campaignId/progress endpoint', () => {
@@ -14,12 +14,12 @@ describe('Campaign API endpoints', () => {
 
     it('success', async () => {
       const server = setupServer(
-        http.post(`${env.CLASSY_API_BASE_URL}/oauth2/auth`, () => {
+        http.post(`${env.GO_FUND_ME_PRO_API_BASE_URL}/oauth2/auth`, () => {
           return HttpResponse.json({
             access_token: '123token',
           });
         }),
-        http.get(`${env.CLASSY_API_BASE_URL}/2.0/campaigns/${campaignId}/overview`, () => {
+        http.get(`${env.GO_FUND_ME_PRO_API_BASE_URL}/2.0/campaigns/${campaignId}/overview`, () => {
           return HttpResponse.json({
             gross_amount: 120.4,
           });
@@ -29,7 +29,7 @@ describe('Campaign API endpoints', () => {
       server.listen();
 
       const response = await request(app).get(`/campaigns/${campaignId}/progress`);
-      const result: { success: true; payload: ClassyCampaignOverview } = response.body;
+      const result: { success: true; payload: GoFundMeProCampaignOverview } = response.body;
 
       expect(response.statusCode).toEqual(StatusCodes.OK);
       expect(result.success).toEqual(true);
@@ -39,11 +39,11 @@ describe('Campaign API endpoints', () => {
       server.close();
     });
 
-    it('Classy auth fails', async () => {
+    it('GoFundMe Pro auth fails', async () => {
       const server = setupServer(
-        http.post(`${env.CLASSY_API_BASE_URL}/oauth2/auth`, () => {
+        http.post(`${env.GO_FUND_ME_PRO_API_BASE_URL}/oauth2/auth`, () => {
           return HttpResponse.json({
-            error: 'Failed to connect to Classy',
+            error: 'Failed to connect to GoFundMe Pro',
           });
         })
       );
@@ -56,19 +56,19 @@ describe('Campaign API endpoints', () => {
       expect(response.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
       expect(result.success).toEqual(false);
       expect(result.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
-      expect(result.message).toEqual('The authentication with Classy failed.');
+      expect(result.message).toEqual('The authentication with GoFundMe Pro failed.');
 
       server.close();
     });
 
     it('Class campaign overview fetch fails', async () => {
       const server = setupServer(
-        http.post(`${env.CLASSY_API_BASE_URL}/oauth2/auth`, () => {
+        http.post(`${env.GO_FUND_ME_PRO_API_BASE_URL}/oauth2/auth`, () => {
           return HttpResponse.json({
             access_token: '123token',
           });
         }),
-        http.get(`${env.CLASSY_API_BASE_URL}/2.0/campaigns/${campaignId}/overview`, () => {
+        http.get(`${env.GO_FUND_ME_PRO_API_BASE_URL}/2.0/campaigns/${campaignId}/overview`, () => {
           return HttpResponse.json({
             error: 'Failed to retrieve aggregates',
           });

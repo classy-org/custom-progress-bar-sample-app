@@ -3,12 +3,12 @@ import { setupServer } from 'msw/node';
 
 import { env } from '@/common/utils/envConfig';
 
-import { auth } from '../classyAuth';
+import { auth } from '../auth';
 
-describe('Classy auth', () => {
+describe('GoFundMePro auth', () => {
   it('success', async () => {
     const server = setupServer(
-      http.post(`${env.CLASSY_API_BASE_URL}/oauth2/auth`, () => {
+      http.post(`${env.GO_FUND_ME_PRO_API_BASE_URL}/oauth2/auth`, () => {
         return HttpResponse.json({
           access_token: '123token',
         });
@@ -26,16 +26,16 @@ describe('Classy auth', () => {
 
   it('Auth fails', async () => {
     const server = setupServer(
-      http.post(`${env.CLASSY_API_BASE_URL}/oauth2/auth`, () => {
+      http.post(`${env.GO_FUND_ME_PRO_API_BASE_URL}/oauth2/auth`, () => {
         return HttpResponse.json({
-          error: 'Failed to connect to Classy',
+          error: 'Failed to connect to GoFundMePro',
         });
       })
     );
 
     server.listen();
 
-    await expect(() => auth()).rejects.toThrowError('The authentication with Classy failed.');
+    await expect(() => auth()).rejects.toThrowError('The authentication with GoFundMe Pro failed.');
 
     server.close();
   });
